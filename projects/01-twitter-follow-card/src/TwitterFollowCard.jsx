@@ -1,9 +1,9 @@
 
 import { useState } from 'react'
 
-export function TwitterFolowCard({children, userName='default'}){
+export function TwitterFolowCard({children, userName='default', initialFollowState}){
 
-    const [isFollowing, setIsFollowing] = useState(false)
+    const [isFollowing, setIsFollowing] = useState(initialFollowState)
     
     const text = isFollowing ? 'Siguiendo' : 'Seguir'
     
@@ -27,9 +27,10 @@ export function TwitterFolowCard({children, userName='default'}){
         </header>
 
         <aside>
-            <button className={buttonClassName} onClick={handleClick}>
-                {text}
-            </button>
+        <button className={buttonClassName} onClick={handleClick}>
+            <span className='tw-followCard-text'>{text}</span>
+            <span className='tw-followCard-stopFollow'>Dejar de seguir</span>
+        </button>
         </aside>
     </article>
 )
