@@ -23,7 +23,8 @@ export function App(){
             {
                 users.map( ({ userName, nombre, isFollowing }) => {
                     return (
-                        <TwitterFolowCard 
+                        <TwitterFolowCard
+                            key={userName}
                             userName={userName}
                             initialFollowState = { isFollowing}>
                             <strong>{nombre}</strong>
