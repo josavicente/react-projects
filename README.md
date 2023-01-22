@@ -50,7 +50,7 @@
 Project-based course to learn **React**. Following the direct from [midudev](https://www.twitch.tv/midudev)
 </div>
 
-## Proyectos
+## Projects
 
 - 01: [Twitter Follow Card](projects/01-twitter-follow-card/)
 - 02: [Tic Tac Toe](projects/02-tic-tac-toe/)
