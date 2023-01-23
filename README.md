@@ -1,7 +1,7 @@
 <div align="center" id="top"> 
   <!-- <img src="./.github/app.gif" alt="React Projects" /> -->
 
-  &#xa0;
+&#xa0;
 
   <!-- <a href="https://reactprojects.netlify.app">Demo</a> -->
 </div>
@@ -26,9 +26,9 @@
 
 <!-- Status -->
 
-<!-- <h4 align="center"> 
+<!-- <h4 align="center">
 	🚧  React Projects 🚀 Under construction...  🚧
-</h4> 
+</h4>
 
 <hr> -->
 
@@ -47,15 +47,17 @@
 
 # Learning React ⚛️
 
-Project-based course to learn **React**. Following the direct from [midudev](https://www.twitch.tv/midudev)
+Project-based course to learn **React**. Following the directs from [midudev](https://www.twitch.tv/midudev)
+
 </div>
 
 ## Projects
 
-- 01: [Twitter Follow Card](projects/01-twitter-follow-card/)
-- 02: [Tic Tac Toe](projects/02-tic-tac-toe/)
+- 01: 🫂 [Twitter Follow Card](projects/01-twitter-follow-card/)
+- 02: 🟣 [Tic Tac Toe](projects/02-tic-tac-toe/)
+- 03: 🐭 [Mouse Followe](projects/03-mouse-follower/)
 
-## :rocket: Technologies ##
+## :rocket: Technologies
 
 The following tools were used in this project:
 
@@ -65,11 +67,11 @@ The following tools were used in this project:
 - [React Native](https://reactnative.dev/)
 - [TypeScript](https://www.typescriptlang.org/)
 
-## :white_check_mark: Requirements ##
+## :white_check_mark: Requirements
 
 Before starting :checkered_flag:, you need to have [Git](https://git-scm.com) and [Node](https://nodejs.org/en/) installed.
 
-## :checkered_flag: Starting ##
+## :checkered_flag: Starting
 
 ```bash
 # Clone this project
@@ -87,10 +89,9 @@ $ yarn start
 # The server will initialize in the <http://localhost:3000>
 ```
 
-## :memo: License ##
+## :memo: License
 
 This project is under license from MIT. For more details, see the [LICENSE](LICENSE.md) file.
-
 
 Made with :heart: by <a href="https://github.com/josavicente" target="_blank">Josa Vicente</a>
 

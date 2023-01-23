@@ -6,7 +6,7 @@ import { TURNS } from './constants'
 import { checkEndGame, checkWinner } from './board'
 import { WinnerModal } from './components/WinnerModal.jsx'
 import { Square } from './components/Square'
-function App () {
+function App() {
   const [board, setBoard] = useState(() => {
     const boardFromStorage = window.localStorage.getItem('board')
     if (boardFromStorage) return JSON.parse(boardFromStorage)
