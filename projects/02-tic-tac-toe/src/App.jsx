@@ -7,6 +7,12 @@ import { checkEndGame, checkWinner } from './board'
 import { WinnerModal } from './components/WinnerModal.jsx'
 import { Square } from './components/Square'
 function App() {
+  const [score, setScore] = useState(() => {
+    const scoreFromStorage = window.localStorage.getItem('score')
+    if (scoreFromStorage) return JSON.parse(scoreFromStorage)
+    return Array(2).fill(0)
+  })
+
   const [board, setBoard] = useState(() => {
     const boardFromStorage = window.localStorage.getItem('board')
     if (boardFromStorage) return JSON.parse(boardFromStorage)
@@ -22,10 +28,12 @@ function App() {
 
   const resetGame = () => {
     setBoard(Array(9).fill(null))
+    setScore(Array(2).fill(0))
     setTurn(TURNS.X)
     setWinner(null)
     window.localStorage.removeItem('board')
     window.localStorage.removeItem('turn')
+    window.localStorage.removeItem('score')
   }
 
   const updateBoard = (index) => {
@@ -34,6 +42,7 @@ function App() {
 
     if (board[index] || winner) return
 
+    const newScore = [...score]
     // Actualizar tablero
     const newBoard = [...board]
     newBoard[index] = turn
@@ -50,6 +59,13 @@ function App() {
     if (newWinner) {
       confetti()
       setWinner(newWinner)
+      if (turn === TURNS.X) {
+        newScore[0]++
+      } else {
+        newScore[1]++
+      }
+      setScore(newScore)
+      window.localStorage.setItem('score', JSON.stringify(newScore))
       // TODO: Check if game is over
     } else if (checkEndGame(newBoard)) {
       setWinner(false)
@@ -57,10 +73,10 @@ function App() {
   }
 
   return (
-    <main className='board'>
+    <main className="board">
       <h1>Tic tac toe</h1>
       <button onClick={resetGame}>Reset del juego</button>
-      <section className='game'>
+      <section className="game">
         {board.map((square, index) => {
           return (
             <Square key={index} index={index} updateBoard={updateBoard}>
@@ -69,11 +85,19 @@ function App() {
           )
         })}
       </section>
-      <section className='turn'>
+      <section className="turn">
         <Square isSelected={turn === TURNS.X}>{TURNS.X}</Square>
         <Square isSelected={turn === TURNS.O}>{TURNS.O}</Square>
       </section>
-
+      <h1>SCORE</h1>
+      <section className="score">
+        <h2>Player {TURNS.X}</h2>
+        <h2>Player {TURNS.O}</h2>
+      </section>
+      <section className="score">
+        <Square>{score[0]}</Square>
+        <Square>{score[1]}</Square>
+      </section>
       <section>
         <WinnerModal resetGame={resetGame} winner={winner} />
       </section>
