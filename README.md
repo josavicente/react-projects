@@ -55,7 +55,8 @@ Project-based course to learn **React**. Following the directs from [midudev](ht
 
 - 01: 🫂 [Twitter Follow Card](projects/01-twitter-follow-card/)
 - 02: 🟣 [Tic Tac Toe](projects/02-tic-tac-toe/)
-- 03: 🐭 [Mouse Followe](projects/03-mouse-follower/)
+- 03: 🐭 [Mouse Follower](projects/03-mouse-follower/)
+- 03: 🐱 [Prueba Técnica Junior & Trainee](04-react-prueba-tecnica)
 
 ## :rocket: Technologies
 
