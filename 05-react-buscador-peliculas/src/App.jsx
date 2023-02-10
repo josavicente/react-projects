@@ -1,9 +1,11 @@
 import './App.css'
-import responseMovies from './mocks/results_ok.json'
+
 import { Movies } from './components/Movies'
+import { useMovies } from './hooks/useMovies'
 
 function App() {
-  const movies = responseMovies.Search
+  const { movies: mappedMovies } = useMovies()
+
   return (
     <div className="page">
       <header>
@@ -14,7 +16,7 @@ function App() {
         </form>
       </header>
       <main>
-        <Movies movies={movies} />
+        <Movies movies={mappedMovies} />
       </main>
     </div>
   )
