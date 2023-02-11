@@ -6,13 +6,14 @@ import { useSearch } from './hooks/useSearch'
 
 function App() {
   const { search, updateSearch, error } = useSearch()
-  const { movies: mappedMovies } = useMovies()
+  const { movies: mappedMovies, getMovies } = useMovies({ search })
   // const [query, setQuery] = useState('')
 
   // const inputRef = useRef()
 
   const handleSubmit = (event) => {
     event.preventDefault()
+    getMovies()
     //   // Unicampo
     //   // Con useRef
     //   // const { value } = inputRef.current

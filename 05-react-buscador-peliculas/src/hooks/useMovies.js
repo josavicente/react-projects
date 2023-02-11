@@ -1,8 +1,11 @@
-import responseMovies from '../mocks/results_ok.json'
+import withResults from '../mocks/results_ok.json'
 // eslint-disable-next-line no-unused-vars
-import withouResults from '../mocks/results_ko.json'
+import withoutResults from '../mocks/results_ko.json'
+import { useState } from 'react'
 
-export function useMovies() {
+export function useMovies({ search }) {
+  const [responseMovies, setResponseMovies] = useState([])
+
   const movies = responseMovies.Search
 
   const mappedMovies = movies?.map((movie) => ({
@@ -12,5 +15,12 @@ export function useMovies() {
     poster: movie.Poster,
   }))
 
-  return { movies: mappedMovies }
+  const getMovies = () => {
+    if (search) {
+      setResponseMovies(withResults)
+    } else {
+      setResponseMovies(withoutResults)
+    }
+  }
+  return { movies: mappedMovies, getMovies }
 }
