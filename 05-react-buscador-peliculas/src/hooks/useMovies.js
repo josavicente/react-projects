@@ -1,4 +1,4 @@
-import withResults from '../mocks/results_ok.json'
+// import withResults from '../mocks/results_ok.json'
 // eslint-disable-next-line no-unused-vars
 import withoutResults from '../mocks/results_ko.json'
 import { useState } from 'react'
@@ -17,7 +17,10 @@ export function useMovies({ search }) {
 
   const getMovies = () => {
     if (search) {
-      setResponseMovies(withResults)
+      fetch(`https://www.omdbapi.com/?apikey=3a5bb1d&s=${search}`)
+        .then((response) => response.json())
+        .then((data) => setResponseMovies(data))
+      // setResponseMovies(withResults)
     } else {
       setResponseMovies(withoutResults)
     }
