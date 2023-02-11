@@ -3,15 +3,39 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  width: 100%;
+  max-width: 800px;
 }
 main {
   display: flex;
-
   justify-content: center;
+  width: 100%;
 }
 
 form {
   align-items: center;
   display: flex;
   justify-content: center;
+}
+
+.movies {
+  list-style: none;
+  margin: 0;
+  display: grid;
+  width: 100%;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 32px;
+}
+
+.movie {
+  text-align: center;
+}
+
+.movie h3,
+.movie p {
+  padding: 0;
+}
+.movie img {
+  border-radius: 25px;
+  margin-top: 16px;
 }
