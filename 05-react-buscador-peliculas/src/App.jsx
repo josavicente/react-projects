@@ -1,5 +1,5 @@
 import './App.css'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Movies } from './components/Movies'
 import { useMovies } from './hooks/useMovies'
 import { useSearch } from './hooks/useSearch'
@@ -18,7 +18,7 @@ function App() {
 
   const handleSubmit = (event) => {
     event.preventDefault()
-    getMovies()
+    getMovies({ search })
     //   // Unicampo
     //   // Con useRef
     //   // const { value } = inputRef.current
@@ -37,6 +37,7 @@ function App() {
     updateSearch(event.target.value)
   }
 
+  useEffect(() => {}, [getMovies])
   const handleSort = () => {
     setSort(!sort)
   }
