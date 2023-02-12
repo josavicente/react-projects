@@ -57,7 +57,7 @@ Project-based course to learn **React**. Following the directs from [midudev](ht
 - 02: 🟣 [Tic Tac Toe](projects/02-tic-tac-toe/)
 - 03: 🐭 [Mouse Follower](projects/03-mouse-follower/)
 - 04: 🐱 [Prueba Técnica Junior & Trainee](projects/04-react-prueba-tecnica)
-- 05: 🎥 [Movie Search](projects/05-react-buscador-peliculas/)
+- 05: 🎥 [Movie Search - Prueba Técnica Junior (useMemo, useCallbacl, useRef)](projects/05-react-buscador-peliculas/)
 
 ## :rocket: Technologies
 
