@@ -1,12 +1,17 @@
 import './App.css'
-// import { useRef } from 'react'
+import { useState } from 'react'
 import { Movies } from './components/Movies'
 import { useMovies } from './hooks/useMovies'
 import { useSearch } from './hooks/useSearch'
 
 function App() {
+  const [sort, setSort] = useState(false)
   const { search, updateSearch, error } = useSearch()
-  const { movies: mappedMovies, loading, getMovies } = useMovies({ search })
+  const {
+    movies: mappedMovies,
+    loading,
+    getMovies,
+  } = useMovies({ search, sort })
   // const [query, setQuery] = useState('')
 
   // const inputRef = useRef()
@@ -32,6 +37,10 @@ function App() {
     updateSearch(event.target.value)
   }
 
+  const handleSort = () => {
+    setSort(!sort)
+  }
+
   return (
     <div className="page">
       <header>
@@ -44,6 +53,7 @@ function App() {
             // ref={inputRef}
             placeholder="Avengers, Star Wars, ..."
           />
+          <input type="checkbox" onChange={handleSort} checked={sort} />
           <button type="submit">Buscar</button>
         </form>
         {error && <p style={{ color: 'red' }}>{error}</p>}
