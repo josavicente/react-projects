@@ -1,7 +1,7 @@
 // import withResults from '../mocks/results_ok.json'
 // eslint-disable-next-line no-unused-vars
 // import withoutResults from '../mocks/results_ko.json'
-import { useRef, useState } from 'react'
+import { useRef, useState, useMemo } from 'react'
 import { searchMovies } from '../services/movies'
 
 export function useMovies({ search, sort }) {
@@ -28,9 +28,14 @@ export function useMovies({ search, sort }) {
     }
   }
 
-  const sortedMovies = sort
-    ? [...movies].sort((a, b) => a.title.localeCompare(b.title))
-    : movies
+  // const sortedMovies = sort
+  //   ? [...movies].sort((a, b) => a.title.localeCompare(b.title))
+  //   : movies
 
+  const sortedMovies = useMemo(() => {
+    return sort
+      ? [...movies].sort((a, b) => a.title.localeCompare(b.title))
+      : movies
+  }, [movies, sort])
   return { movies: sortedMovies, loading, getMovies }
 }
