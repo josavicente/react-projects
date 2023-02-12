@@ -6,7 +6,7 @@ import { useSearch } from './hooks/useSearch'
 
 function App() {
   const { search, updateSearch, error } = useSearch()
-  const { movies: mappedMovies, getMovies } = useMovies({ search })
+  const { movies: mappedMovies, loading, getMovies } = useMovies({ search })
   // const [query, setQuery] = useState('')
 
   // const inputRef = useRef()
@@ -49,7 +49,7 @@ function App() {
         {error && <p style={{ color: 'red' }}>{error}</p>}
       </header>
       <main>
-        <Movies movies={mappedMovies} />
+        {loading ? <p>Cargando...</p> : <Movies movies={mappedMovies} />}
       </main>
     </div>
   )
