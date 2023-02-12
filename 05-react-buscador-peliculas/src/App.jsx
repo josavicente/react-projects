@@ -1,8 +1,10 @@
 import './App.css'
-import { useEffect, useState } from 'react'
+import { useState, useCallback } from 'react'
 import { Movies } from './components/Movies'
 import { useMovies } from './hooks/useMovies'
 import { useSearch } from './hooks/useSearch'
+
+import debounce from 'just-debounce-it'
 
 function App() {
   const [sort, setSort] = useState(false)
@@ -12,6 +14,13 @@ function App() {
     loading,
     getMovies,
   } = useMovies({ search, sort })
+
+  const debouncedGetMovies = useCallback(
+    debounce((search) => {
+      getMovies({ search })
+    }, 300),
+    []
+  )
   // const [query, setQuery] = useState('')
 
   // const inputRef = useRef()
@@ -34,10 +43,14 @@ function App() {
 
   const handleChange = (event) => {
     // Controlar el formulario viendo como cambia el estado
+    const newSearch = event.target.value
     updateSearch(event.target.value)
+    debouncedGetMovies(newSearch)
+    //  getMovies({ search: newSearch })
   }
 
-  useEffect(() => {}, [getMovies])
+  // useEffect(() => {}, [getMovies])
+
   const handleSort = () => {
     setSort(!sort)
   }
