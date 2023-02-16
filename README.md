@@ -58,6 +58,7 @@ Project-based course to learn **React**. Following the directs from [midudev](ht
 - 03: 🐭 [Mouse Follower](projects/03-mouse-follower/)
 - 04: 🐱 [Prueba Técnica Junior & Trainee](projects/04-react-prueba-tecnica)
 - 05: 🎥 [Movie Search - Prueba Técnica Junior (useMemo, useCallbacl, useRef)](projects/05-react-buscador-peliculas/)
+- 06: 🛒 [Shopping Cart - Prueba Técnica Mid (useContext, useReducer, useId)](projects/06-shopping-cart/)
 
 ## :rocket: Technologies
 
