@@ -1,34 +1,56 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
+import { useEffect, useState } from 'react'
 import './App.css'
 
-function App() {
-  const [count, setCount] = useState(0)
+const NAVIGATION_EVENT = 'pushState'
 
+function navigate(href) {
+  window.history.pushState({}, '', href)
+  // Crear un evento personalizado
+  const navEvent = new Event(NAVIGATION_EVENT)
+  window.dispatchEvent(navEvent)
+}
+function HomePage() {
   return (
-    <div className="App">
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src="/vite.svg" className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://reactjs.org" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </div>
+    <>
+      <h1>Homepage</h1>
+      <p></p>
+      <button onClick={() => navigate('/about')}>About</button>
+    </>
   )
 }
 
+function AboutPage() {
+  return (
+    <>
+      <h1>About</h1>
+      <div>
+        <img
+          src="https://pbs.twimg.com/profile_images/1550172985058811905/f8Lt3CAd_400x400.jpg"
+          alt="Foto Josa"
+        />
+        <p>Hola!</p>
+      </div>
+      <button onClick={() => navigate('/')}>Ir a la Home</button>
+    </>
+  )
+}
+
+function App() {
+  const [currentPath, setCurrentPath] = useState(window.location.pathname)
+  useEffect(() => {
+    const onLocationChange = () => {
+      setCurrentPath(window.location.pathname)
+    }
+    window.addEventListener(NAVIGATION_EVENT, onLocationChange)
+    return () => {
+      window.removeEventListener(NAVIGATION_EVENT, onLocationChange)
+    }
+  }, [])
+  return (
+    <main>
+      {currentPath === '/' && <HomePage />}
+      {currentPath === '/about' && <AboutPage />}
+    </main>
+  )
+}
 export default App
