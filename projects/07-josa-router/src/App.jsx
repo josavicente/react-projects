@@ -25,7 +25,10 @@ const routes = [
 function App() {
   return (
     <main>
-      <Router routes={routes} defaultComponent={Page404} />
+      <Router routes={routes} defaultComponent={Page404}>
+        <Route path="/" Component={HomePage} />
+        <Route path="/about" Component={AboutPage} />
+      </Router>
     </main>
   )
 }
